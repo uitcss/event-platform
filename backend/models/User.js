@@ -9,7 +9,15 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: true
   },
-  class_details: {
+  branch: {
+    type: String,
+    required: true
+  },
+  semester: {
+    type: String,
+    required: true
+  },
+  section: {
     type: String,
     required: true
   },
@@ -22,15 +30,15 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: true
   },
-  payment_screenshot_url: {
-    type: String,
-    required: true
-  },
-  payment_status: {
-    type: String,
-    enum: ['Pending', 'Approved'],
-    default: 'Pending'
-  },
+//   payment_screenshot_url: {
+//     type: String,
+//     required: true
+//   },
+//   payment_status: {
+//     type: String,
+//     enum: ['Pending', 'Approved'],
+//     default: 'Pending'
+//   },
   is_active: {
     type: Boolean,
     default: false

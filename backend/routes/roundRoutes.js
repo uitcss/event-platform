@@ -1,25 +1,35 @@
 import express from 'express';
+import authMiddleware from '../middleware/adminAuthMiddleware.js';
+import {
+  getRounds,
+  createRound,
+  activateRound,
+  updateRoundTime,
+  deactivateRound,
+  deleteRound
+} from '../controllers/roundControllers.js';
 
 const roundRoutes = express.Router();
 
-//Get all rounds and status
-roundRoutes.get('/', (req, res) => {
-  res.send('Round route is working');
-});
+// Apply auth middleware to all routes
+roundRoutes.use(authMiddleware);
 
-//Create new round
-roundRoutes.post('/', (req, res) => {
-  res.send('Round route is working');
-})
+// Get all rounds
+roundRoutes.get('/', getRounds);
 
-// Activate this round → sets is_active=true, other rounds = false
-roundRoutes.patch('/:id/activate',(req, res) => {
-  res.send('Round route is working');
-} );
+// Create new round
+roundRoutes.post('/', createRound);
 
-// Update time limit of a round
-roundRoutes.patch('/:id/time',(req, res) => {
-    res.send('Round route is working'); 
-} );
+// Activate a round (deactivates others)
+roundRoutes.patch('/:id/activate', activateRound);
+
+// Update round time limit
+roundRoutes.patch('/:id/time', updateRoundTime);
+
+// Deactivate a round
+roundRoutes.patch('/:id/deactivate', deactivateRound);
+
+// Delete a round
+roundRoutes.delete('/:id', deleteRound);
 
 export default roundRoutes;

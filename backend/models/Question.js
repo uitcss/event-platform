@@ -1,14 +1,14 @@
-const mongoose = require('mongoose');
+import mongoose from 'mongoose';
 
 const questionSchema = new mongoose.Schema({
   round_id: {
-    type: Number,
-    required: true,
-    ref: 'Round' // References the round (1,2,3)
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Round',
+    required: true
   },
   question_type: {
     type: String,
-    enum: ['MCQ', 'Fill', 'TrueFalse', 'PseudoCode', 'CodeSnippet'],
+    enum: ['MCQ', 'Fill', 'TrueFalse', 'ShortAnswer'],
     required: true
   },
   question_text: {

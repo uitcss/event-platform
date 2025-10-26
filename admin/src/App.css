@@ -1,0 +1,140 @@
+/* Global Color Variables: Minimalist & Warm */
+:root {
+  /* --- Backgrounds & Surfaces --- */
+  
+  /* Use this for the main page background */
+  --bg-primary: #1C1C1C; 
+  
+  /* Use this for sidebars, navbars, cards, or modals */
+  --surface-primary: #282828;
+
+  /* --- Text --- */
+  
+  /* Primary text color with a warm, soft feel */
+  --text-primary: #F5E8D8; 
+  
+  /* A slightly dimmer color for secondary text or descriptions */
+  --text-secondary: #A8A29E; /* (A muted tone of the primary text) */
+
+  /* --- Accents --- */
+  
+  /* Option 1: Muted & Calm Accent */
+  --accent-primary: #FF6F61; /* (Muted Coral) */
+  
+  /* Option 2: Vibrant & Energetic Accent */
+  --accent-vibrant: #FF5722; /* (Vibrant Orange) */
+}
+
+/* Main app layout */
+.app {
+  min-height: 100vh;
+  position: relative;
+  width: 100%;
+  overflow-x: hidden;
+  background-color: var(--bg-primary);
+}
+
+/* Main content area */
+.app-content {
+  margin-top: 60px; /* Height of the navbar */
+  margin-left: 250px; /* Width of the sidebar */
+  min-height: 100vh;
+  box-sizing: border-box;
+  width: calc(100% - 250px);
+  transition: all 0.3s ease;
+}
+
+@media (max-width: 1200px) {
+  .app-content {
+    margin-left: 200px;
+    width: calc(100% - 200px);
+  }
+}
+
+@media (max-width: 992px) {
+  .app-content {
+    margin-left: 180px;
+    width: calc(100% - 180px);
+  }
+}
+
+@media (max-width: 768px) {
+  .app-content {
+    margin-left: 60px;
+    width: calc(100% - 60px);
+  }
+}
+
+/* Content wrapper */
+.content-wrapper {
+  display: flex;
+  flex: 1;
+  position: relative;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+/* Sidebar - fixed to left */
+.sidebar {
+  position: fixed;
+  left: 0;
+  top: 60px; /* Below navbar */
+  bottom: 0;
+  width: 250px;
+  background-color: var(--surface-primary);
+  overflow-y: auto;
+  box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+  z-index: 50;
+  transition: all 0.3s ease;
+}
+
+@media (max-width: 1200px) {
+  .sidebar {
+    width: 200px;
+  }
+}
+
+@media (max-width: 992px) {
+  .sidebar {
+    width: 180px;
+  }
+}
+
+@media (max-width: 768px) {
+  .sidebar {
+    width: 60px;
+    overflow: hidden;
+  }
+}
+
+
+/* Ensure content doesn't get too wide on large screens */
+@media (min-width: 1600px) {
+  .page-container {
+    max-width: 1600px;
+    margin: 0 auto;
+    padding: 20px 40px;
+  }
+}
+
+/* Navbar specific styles */
+.navbar-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  height: 60px;
+  background-color: var(--surface-primary);
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  display: flex;
+  align-items: center;
+  padding: 0 20px;
+}
+
+/* Ensure content is not hidden behind navbar */
+.main-content > * {
+  position: relative;
+  z-index: 1;
+}

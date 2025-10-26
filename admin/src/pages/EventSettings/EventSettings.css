@@ -1,0 +1,253 @@
+/* Event Settings Container */
+.event-settings-container {
+  padding: 1.5rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  color: #F5E8D8; /* Text primary color */
+  min-height: calc(100vh - 70px);
+}
+
+.event-settings-container h1 {
+  color: #F5E8D8;
+  margin-bottom: 1.5rem;
+  text-align: center;
+  font-size: 1.8rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* Settings Form */
+.settings-form {
+  background: #282828; /* Surface primary color */
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  padding: 1.25rem;
+  margin-bottom: 1.5rem;
+  border: 1px solid #3a3a3a;
+}
+
+.settings-form h2 {
+  color: #F5E8D8;
+  margin: 0 0 1.25rem 0;
+  font-size: 1.25rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid #3a3a3a;
+  font-weight: 500;
+}
+
+.form-group {
+  margin-bottom: 1rem;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.4rem;
+  font-weight: 500;
+  color: #A8A29E; /* Text secondary color */
+  font-size: 0.9rem;
+}
+
+.form-group input[type="text"],
+.form-group textarea {
+  width: 100%;
+  padding: 0.6rem 0.8rem;
+  border: 1px solid #3a3a3a;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  transition: all 0.3s;
+  color: #F5E8D8;
+  background-color: #1C1C1C; /* Background primary color */
+}
+
+.form-group textarea {
+  min-height: 80px;
+  resize: vertical;
+  font-family: inherit;
+}
+
+.form-group input[type="text"]:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: #FF6F61; /* Accent primary color */
+  box-shadow: 0 0 0 2px rgba(255, 111, 97, 0.2);
+}
+
+/* Buttons */
+button {
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 4px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  margin-right: 0.6rem;
+  margin-top: 0.4rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-weight: 600;
+}
+
+.btn-primary {
+  background-color: #FF6F61; /* Accent primary color */
+  color: #1C1C1C;
+}
+
+.btn-primary:hover {
+  background-color: #e65a4f;
+  transform: translateY(-1px);
+}
+
+.btn-secondary {
+  background-color: #3a3a3a;
+  color: #F5E8D8;
+}
+
+.btn-secondary:hover {
+  background-color: #4a4a4a;
+  transform: translateY(-1px);
+}
+
+.btn-edit {
+  background-color: #f39c12;
+  color: #1C1C1C;
+  margin-right: 0.5rem;
+}
+
+.btn-edit:hover {
+  background-color: #e08e0b;
+  transform: translateY(-1px);
+}
+
+.btn-delete {
+  background-color: #e74c3c;
+  color: white;
+}
+
+.btn-delete:hover {
+  background-color: #d63c2c;
+  transform: translateY(-1px);
+}
+
+/* Settings Table */
+.settings-list {
+  background: #282828; /* Surface primary color */
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  padding: 1.25rem;
+  overflow-x: auto;
+  border: 1px solid #3a3a3a;
+}
+
+.settings-list h2 {
+  color: #F5E8D8;
+  margin: 0 0 1.25rem 0;
+  font-size: 1.25rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid #3a3a3a;
+  font-weight: 500;
+}
+
+.settings-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  margin-top: 0.5rem;
+  font-size: 0.9rem;
+}
+
+.settings-table th,
+.settings-table td {
+  padding: 0.6rem 0.8rem;
+  text-align: left;
+  border-bottom: 1px solid #3a3a3a;
+  color: #F5E8D8;
+  vertical-align: middle;
+}
+
+.settings-table th {
+  background-color: #333; /* Slightly lighter than surface */
+  font-weight: 600;
+  color: #F5E8D8;
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  letter-spacing: 0.5px;
+  padding: 0.8rem;
+}
+
+.settings-table tbody tr {
+  transition: background-color 0.2s;
+}
+
+.settings-table tbody tr:hover {
+  background-color: #333;
+}
+
+
+.actions {
+  white-space: nowrap;
+  text-align: right;
+}
+
+.actions button {
+  padding: 0.4rem 0.8rem;
+  font-size: 0.8rem;
+  margin: 0.1rem 0.2rem;
+}
+
+/* Loading State */
+.loading {
+  text-align: center;
+  padding: 2rem;
+  font-size: 1rem;
+  color: #A8A29E; /* Text secondary color */
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .event-settings-container {
+    padding: 1rem;
+  }
+  
+  .settings-table {
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
+    -webkit-overflow-scrolling: touch;
+  }
+  
+  .settings-table th,
+  .settings-table td {
+    padding: 0.5rem 0.6rem;
+    font-size: 0.85rem;
+  }
+  
+  .actions {
+    white-space: nowrap;
+  }
+  
+  .actions button {
+    padding: 0.3rem 0.6rem;
+    font-size: 0.75rem;
+    margin: 0.1rem;
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #282828;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #3a3a3a;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #4a4a4a;
+}
