@@ -1,7 +1,9 @@
 import express from 'express';
+import authMiddleware from '../middleware/adminAuthMiddleware.js';
 
 const gradingRoutes = express.Router();
 
+gradingRoutes.use(authMiddleware);
 
 //Get all submissions for a round pending grading
 gradingRoutes.get('/round/:roundId', (req, res) => {
