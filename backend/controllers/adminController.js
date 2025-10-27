@@ -61,4 +61,38 @@ const SetAdmin = async (req, res) => {
     }
 }
 
-export { AdminLogin, SetAdmin };
+
+const getAdmins = async (req, res) => {
+    try {
+        const admins = await Admin.find().select('-password');
+        return res.status(200).json({ admins });
+    } catch (error) {
+        console.error(error);
+        return res.status(500).json({ message: 'Server error' });
+    }
+};
+
+const deleteAdmin = async (req, res) => {
+    try {
+        const { id } = req.params;
+        
+        // Prevent deleting the last admin
+        const adminCount = await Admin.countDocuments();
+        if (adminCount <= 1) {
+            return res.status(400).json({ message: 'Cannot delete the last admin' });
+        }
+
+        const deletedAdmin = await Admin.findByIdAndDelete(id);
+        
+        if (!deletedAdmin) {
+            return res.status(404).json({ message: 'Admin not found' });
+        }
+
+        return res.status(200).json({ message: 'Admin deleted successfully' });
+    } catch (error) {
+        console.error('Error deleting admin:', error);
+        return res.status(500).json({ message: 'Server error while deleting admin' });
+    }
+};
+
+export { AdminLogin, SetAdmin, getAdmins, deleteAdmin };

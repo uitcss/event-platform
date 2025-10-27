@@ -1,11 +1,12 @@
 import express from 'express';
-import {AdminLogin,SetAdmin} from '../controllers/adminController.js';
+import { AdminLogin, getAdmins, SetAdmin, deleteAdmin } from '../controllers/adminController.js';
 
 const adminAuthRoutes = express.Router();
 
-//Admin login (email + password)
+// Admin management routes
+adminAuthRoutes.get('/', getAdmins);
 adminAuthRoutes.post('/login', AdminLogin);
-adminAuthRoutes.post('/setadmin',SetAdmin)
-
+adminAuthRoutes.post('/setadmin', SetAdmin);
+adminAuthRoutes.delete('/:id', deleteAdmin);
 
 export default adminAuthRoutes;

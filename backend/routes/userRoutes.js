@@ -1,36 +1,38 @@
 import express from 'express';
 import authMiddleware from '../middleware/adminAuthMiddleware.js';
+import {
+  getAllUsers,
+  getUsersByRound,
+  getUserById,
+  promoteUser,
+  deactivateUser,
+  depromoteUser,
+  activateUser
+} from '../controllers/userControllers.js';
 
 const userRoutes = express.Router();
 
 userRoutes.use(authMiddleware);
 
 // Get all users
-userRoutes.get('/', (req, res) => {
-  res.send('User route is working');
-});
+userRoutes.get('/', getAllUsers);
 
 // Get users by round
-userRoutes.get('/round/:roundId', (req, res) => {
-  res.send('User route is working');
-});
+userRoutes.get('/round/:roundId', getUsersByRound);
 
 // Get single user by ID
-userRoutes.get('/:id', (req, res) => {
-  res.send('User route is working');
-});
-
+userRoutes.get('/:id', getUserById);
 
 // Promote user to next round → increments current_round
-userRoutes.patch('/:id/promote', (req, res) => {
-  res.send('User route is working');
-});
+userRoutes.patch('/:id/promote', promoteUser);
 
 // Deactivate user → sets is_active = false
-userRoutes.patch('/:id/deactivate', (req, res) => {
-  res.send('User route is working');
-});
+userRoutes.patch('/:id/deactivate', deactivateUser);
 
+// Depromote user to previous round → decrements current_round
+userRoutes.patch('/:id/depromote', depromoteUser);
 
+// Activate user → sets is_active = true
+userRoutes.patch('/:id/activate', activateUser);
 
 export default userRoutes;

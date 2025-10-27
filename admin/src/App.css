@@ -1,27 +1,18 @@
-/* Global Color Variables: Minimalist & Warm */
+
+/* do not inherit this styles its causing issues with the ui of app */
 :root {
-  /* --- Backgrounds & Surfaces --- */
-  
-  /* Use this for the main page background */
   --bg-primary: #1C1C1C; 
   
-  /* Use this for sidebars, navbars, cards, or modals */
   --surface-primary: #282828;
 
-  /* --- Text --- */
   
-  /* Primary text color with a warm, soft feel */
   --text-primary: #F5E8D8; 
   
-  /* A slightly dimmer color for secondary text or descriptions */
-  --text-secondary: #A8A29E; /* (A muted tone of the primary text) */
+  --text-secondary: #A8A29E; 
 
-  /* --- Accents --- */
   
-  /* Option 1: Muted & Calm Accent */
   --accent-primary: #FF6F61; /* (Muted Coral) */
   
-  /* Option 2: Vibrant & Energetic Accent */
   --accent-vibrant: #FF5722; /* (Vibrant Orange) */
 }
 
@@ -34,10 +25,9 @@
   background-color: var(--bg-primary);
 }
 
-/* Main content area */
 .app-content {
-  margin-top: 60px; /* Height of the navbar */
-  margin-left: 250px; /* Width of the sidebar */
+  margin-top: 60px;
+  margin-left: 250px; 
   min-height: 100vh;
   box-sizing: border-box;
   width: calc(100% - 250px);
@@ -75,11 +65,11 @@
   padding: 0;
 }
 
-/* Sidebar - fixed to left */
+
 .sidebar {
   position: fixed;
   left: 0;
-  top: 60px; /* Below navbar */
+  top: 60px; 
   bottom: 0;
   width: 250px;
   background-color: var(--surface-primary);
@@ -109,7 +99,6 @@
 }
 
 
-/* Ensure content doesn't get too wide on large screens */
 @media (min-width: 1600px) {
   .page-container {
     max-width: 1600px;
@@ -118,7 +107,6 @@
   }
 }
 
-/* Navbar specific styles */
 .navbar-container {
   position: fixed;
   top: 0;
@@ -133,7 +121,6 @@
   padding: 0 20px;
 }
 
-/* Ensure content is not hidden behind navbar */
 .main-content > * {
   position: relative;
   z-index: 1;
