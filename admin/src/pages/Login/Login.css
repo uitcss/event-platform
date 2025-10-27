@@ -70,6 +70,7 @@
   transition: color 0.2s ease;
 }
 
+/* Regular input fields */
 .login-input {
   width: 100%;
   padding: 0.9rem 1.2rem;
@@ -81,6 +82,56 @@
   transition: all 0.3s ease;
   box-sizing: border-box;
   outline: none;
+  margin-bottom: 1.5rem;
+  height: 3rem;
+}
+
+/* Password input container */
+.login-password-container {
+  width: 100%;
+  margin-bottom: 1.5rem;
+}
+
+.login-password-input-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.login-password-input {
+  width: 100%;
+  padding: 0.9rem 1.2rem;
+  padding-right: 4.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.03);
+  color: #F5E8D8;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  box-sizing: border-box;
+  outline: none;
+  height: 3rem;
+}
+
+.login-password-toggle {
+
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #A8A29E;
+  cursor: pointer;
+  padding: 0.35rem 0.9rem;
+  font-size: 0.85rem;
+  font-weight: 500;
+  margin-left: 10px;
+  transition: color 0.2s ease;
+  border-radius: 8px;
+  height: 3rem;
+}
+
+.password-toggle:hover {
+  color: #F5E8D8;
+  background-color: rgba(255, 255, 255, 0.05);
 }
 
 .login-input:focus {

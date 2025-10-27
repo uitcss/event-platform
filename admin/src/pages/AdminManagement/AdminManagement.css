@@ -1,0 +1,314 @@
+/* Admin Management Styles */
+.admin-management {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+  color: #F5E8D8; /* text-primary */
+}
+
+.admin-management h2 {
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  color: #F5E8D8; /* text-primary */
+  border-bottom: 2px solid #FF6F61; /* accent-primary */
+  padding-bottom: 0.5rem;
+  display: inline-block;
+  font-weight: 600;
+}
+
+.admin-management h3 {
+  font-size: 1.5rem;
+  margin: 1.5rem 0;
+  color: #F5E8D8; /* text-primary */
+  font-weight: 500;
+}
+
+/* Form Styles */
+.admin-form-section {
+  background: #282828; /* surface-primary */
+  border-radius: 8px;
+  padding: 1.5rem;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  margin-bottom: 2rem;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.admin-form {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+  align-items: end;
+}
+
+.form-group {
+  margin-bottom: 1rem;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+  color: #A8A29E; /* text-secondary */
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* Admin Password Container */
+.admin-password-container {
+  width: 100%;
+  margin-top: 0.25rem;
+}
+
+.admin-password-input-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.admin-form-input {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  padding-right: 3.5rem; /* Make room for the toggle button */
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  background-color: rgba(255, 255, 255, 0.03);
+  color: #F5E8D8;
+  box-sizing: border-box;
+  height: 2.8rem;
+}
+
+.admin-password-toggle {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #A8A29E;
+  cursor: pointer;
+  padding: 0.75rem 1rem;
+  font-size: 0.85rem;
+  font-weight: 500;
+  margin-left: 10px;
+  transition: color 0.2s ease;
+  border-radius: 8px;
+  height: 2.8rem;
+}
+
+.admin-password-toggle:hover {
+  color: #F5E8D8;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+/* Make sure regular form inputs have consistent height */
+.form-input {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  background-color: rgba(255, 255, 255, 0.03);
+  color: #F5E8D8;
+  height: 2.8rem;
+  box-sizing: border-box;
+}
+
+.form-input:focus {
+  outline: none;
+  border-color: #FF6F61; /* accent-primary */
+  box-shadow: 0 0 0 2px rgba(255, 111, 97, 0.2);
+}
+
+.submit-btn {
+  background-color: #FF6F61; /* accent-primary */
+  color: #fff;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 4px;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  height: 42px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.submit-btn:hover:not(:disabled) {
+  background-color: #FF5722; /* accent-vibrant */
+  transform: translateY(-1px);
+}
+
+.submit-btn:disabled {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: #A8A29E; /* text-secondary */
+  cursor: not-allowed;
+}
+
+/* Admin List Styles */
+.admin-list-section {
+  background: #282828; /* surface-primary */
+  border-radius: 8px;
+  padding: 1.5rem;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.admin-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+}
+
+.admin-card {
+  display: flex;
+  align-items: center;
+  padding: 1.25rem;
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 6px;
+  transition: all 0.3s ease;
+  border-left: 4px solid #FF6F61; /* accent-primary */
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  position: relative;
+  overflow: hidden;
+}
+
+.admin-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.admin-avatar {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: #FF6F61; /* accent-primary */
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-right: 1rem;
+  flex-shrink: 0;
+  text-transform: uppercase;
+}
+
+.admin-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.admin-details {
+  flex: 1;
+  margin-right: 1rem;
+}
+
+.admin-info h4 {
+  margin: 0 0 0.25rem 0;
+  color: #F5E8D8; /* text-primary */
+  font-weight: 500;
+  word-break: break-word;
+}
+
+.admin-info p {
+  margin: 0;
+  color: #A8A29E; /* text-secondary */
+  font-size: 0.9rem;
+  word-break: break-all;
+}
+
+.delete-btn {
+  background-color: rgba(244, 67, 54, 0.1);
+  color: #f44336;
+  border: 1px solid rgba(244, 67, 54, 0.2);
+  border-radius: 4px;
+  padding: 0.4rem 0.8rem;
+  font-size: 0.85rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+  margin-left: 1rem;
+}
+
+.delete-btn:hover:not(:disabled) {
+  background-color: rgba(244, 67, 54, 0.2);
+  transform: translateY(-1px);
+}
+
+.delete-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Message Styles */
+.message {
+  padding: 1rem;
+  margin-bottom: 1.5rem;
+  border-radius: 4px;
+  font-weight: 500;
+  animation: slideIn 0.3s ease-out;
+  border-left: 4px solid transparent;
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+.message.success {
+  background-color: rgba(76, 175, 80, 0.1);
+  color: #4caf50;
+  border-left-color: #4caf50;
+}
+
+.message.error {
+  background-color: rgba(244, 67, 54, 0.1);
+  color: #f44336;
+  border-left-color: #f44336;
+}
+
+/* Loading State */
+.loading {
+  text-align: center;
+  padding: 2rem;
+  color: #A8A29E; /* text-secondary */
+  font-style: italic;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .admin-form {
+    grid-template-columns: 1fr;
+  }
+  
+  .admin-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .admin-management {
+    padding: 1rem;
+  }
+  
+  .admin-management h2 {
+    font-size: 1.75rem;
+  }
+  
+  .admin-management h3 {
+    font-size: 1.25rem;
+  }
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

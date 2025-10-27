@@ -10,6 +10,7 @@ const Login = () => {
     const [password, setPassword] = useState("");
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState("");
+    const [showPassword, setShowPassword] = useState(false);
 
     const { isAuthed, login } = useAuth();
 
@@ -51,13 +52,25 @@ const Login = () => {
                 />
 
                 <label className="login-label">Password</label>
-                <input
-                    className="login-input"
-                    type="password"
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                    placeholder="Password"
-                />
+                <div className="login-password-container">
+                    <div className="login-password-input-wrapper">
+                        <input
+                            className="login-password-input"
+                            type={showPassword ? "text" : "password"}
+                            value={password}
+                            onChange={(e) => setPassword(e.target.value)}
+                            placeholder="Password"
+                        />
+                        <button 
+                            type="button" 
+                            className="login-password-toggle"
+                            onClick={() => setShowPassword(!showPassword)}
+                            aria-label={showPassword ? "Hide password" : "Show password"}
+                        >
+                            {showPassword ? 'Hide' : 'Show'}
+                        </button>
+                    </div>
+                </div>
 
                 {error && <div className="error-message">{error}</div>}
                 <button className="login-button" type="submit" disabled={loading}>
