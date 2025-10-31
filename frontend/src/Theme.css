@@ -1,0 +1,140 @@
+:root {
+  /* Light Theme Palette */
+  --uu-gradient-start: #4F46E5;   /* indigo */
+  --uu-gradient-end:   #7C3AED;   /* violet */
+  --uu-bg:             #F9FAFB;  /* light gray background */
+  --uu-accent:         #4F46E5;   /* indigo */
+  --uu-surface:        #FFFFFF;   /* white surface */
+  --uu-text-on-dark:   #1F2937;   /* dark gray text */
+  --uu-muted:          #6B7280;   /* muted text */
+  --uu-border:         #E5E7EB;   /* light border */
+  --uu-radius:         12px;
+  --uu-shadow:         0 4px 20px rgba(0, 0, 0, 0.08);
+}
+
+/* Page / app background */
+body.uucs-light {
+  background: var(--uu-bg);
+  color: var(--uu-text-on-dark);
+  font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  min-height: 100vh;
+  margin: 0;
+  line-height: 1.6;
+}
+
+/* Logo container — keeps premium gradient and spacing */
+.uucs-logo {
+  display: inline-grid;
+  place-items: center;
+  width: 140px;            /* tweak for your layout */
+  height: 160px;
+  border-radius: var(--uu-radius);
+  background: linear-gradient(135deg, var(--uu-gradient-start), var(--uu-gradient-end));
+  box-shadow: var(--uu-shadow);
+  padding: 18px;
+  /* if you want the logo inside to be white / svg to show */
+  -webkit-mask-image: none;
+}
+
+/* Alternative: logo on transparent card */
+.uucs-logo-card {
+  background: linear-gradient(145deg, rgba(79, 70, 229, 0.08), rgba(124, 58, 237, 0.04));
+  border: 1px solid var(--uu-border);
+  padding: 12px;
+  border-radius: 16px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Header style */
+.uucs-header {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  padding: 24px;
+  background: white;
+  border-bottom: 1px solid var(--uu-border);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+/* Accent text & links */
+.uucs-accent {
+  color: var(--uu-accent);
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.2s ease;
+}
+.uucs-accent:hover {
+  color: var(--uu-gradient-end);
+  text-decoration: underline;
+}
+
+/* Primary button */
+.uucs-btn {
+  --btn-padding: 0.7rem 1.1rem;
+  display: inline-grid;
+  place-items: center;
+  gap: 8px;
+  padding: var(--btn-padding);
+  border-radius: 10px;
+  background: linear-gradient(135deg, var(--uu-gradient-start), var(--uu-gradient-end));
+  color: white;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 4px 14px rgba(79, 70, 229, 0.2);
+  transition: all 0.2s ease;
+}
+.uucs-btn:active { transform: translateY(1px) scale(0.99); }
+.uucs-btn:hover  { 
+  box-shadow: 0 6px 20px rgba(79, 70, 229, 0.3);
+  transform: translateY(-1px);
+}
+
+/* Secondary (ghost) button */
+.uucs-btn-ghost {
+  padding: var(--btn-padding);
+  background: white;
+  color: var(--uu-accent);
+  border: 1px solid var(--uu-border);
+  border-radius: 10px;
+  transition: all 0.2s ease;
+}
+
+/* Card surface */
+.uucs-card {
+  background: var(--uu-surface);
+  border: 1px solid var(--uu-border);
+  border-radius: 14px;
+  padding: 18px;
+  box-shadow: 0 8px 24px rgba(3,7,18,0.6);
+  border: 1px solid var(--uu-border);
+  color: var(--uu-text-on-dark);
+}
+
+/* Muted text */
+.uucs-muted { color: var(--uu-muted); font-size: 0.95rem; }
+
+/* Small UI touches */
+.uucs-pill {
+  display: inline-block;
+  padding: 6px 10px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, rgba(56,189,248,0.08), rgba(0,198,255,0.06));
+  color: var(--uu-accent);
+  font-weight: 600;
+  border: 1px solid rgba(56,189,248,0.08);
+}
+
+/* Utility: subtle glow for active elements */
+.uucs-glow {
+  box-shadow: 0 6px 22px rgba(0,198,255,0.12), 0 2px 6px rgba(7,12,30,0.5);
+}
+
+/* Responsive tweaks */
+@media (prefers-reduced-motion: reduce) {
+  .uucs-btn, .uucs-logo { transition: none; transform: none; }
+}

@@ -1,4 +1,5 @@
 import bcrypt from "bcrypt";
+import jwt from "jsonwebtoken";
 import User from "../models/User.js"; // adjust the path to your User model
 import EventSetting from "../models/EventSettings.js";
 
@@ -16,7 +17,7 @@ const registerUser = async (req, res) => {
     // Hash password
     const saltRounds = 10;
     const hashedPassword = await bcrypt.hash(password, saltRounds);
-    
+
     // Create user
     const newUser = await User.create({
       name,
@@ -70,8 +71,17 @@ const loginUser = async (req, res) => {
       return res.status(403).json({ message: "You are not eligible for this round." });
     }
 
+ 
+    const jwtSecret = process.env.JWT_SECRET;
+    
+    const token = jwt.sign(
+      { id: user._id, email: user.email },
+      jwtSecret,
+      { expiresIn: '4h' } // token expires in 4 hours
+    );
+
     // Successful login
-    res.status(200).json({ message: "Login successful", userId: user._id });
+    res.status(200).json({ message: "Login successful", token: token });
 
   } catch (error) {
     console.error(error);

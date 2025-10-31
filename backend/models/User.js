@@ -30,15 +30,10 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: true
   },
-//   payment_screenshot_url: {
-//     type: String,
-//     required: true
-//   },
-//   payment_status: {
-//     type: String,
-//     enum: ['Pending', 'Approved'],
-//     default: 'Pending'
-//   },
+  is_logged_in: {// this is to make sure user only logs in once, for now it's still not implemented
+    type: Boolean,
+    default: false
+  },
   is_active: {
     type: Boolean,
     default: false

@@ -4,7 +4,7 @@ import { loginUser, registerUser } from '../controllers/authController.js';
 const authRoutes = express.Router();
 
 
-//User registration (name, university, class, email, password, payment screenshot)
+//User registration (name, university, class, email, password)
 authRoutes.post('/register',registerUser);
 
 
