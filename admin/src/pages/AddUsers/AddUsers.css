@@ -1,0 +1,246 @@
+/* AddUsers Component Styles */
+.add-users-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+  color: #F5E8D8; /* --text-primary */
+  background-color: #1C1C1C; /* --bg-primary */
+}
+
+.add-users-header {
+  margin-bottom: 2.5rem;
+  text-align: center;
+}
+
+.add-users-header h1 {
+  font-size: 2.25rem;
+  color: #FF6F61; /* --accent-primary */
+  margin-bottom: 0.5rem;
+}
+
+.add-users-header p {
+  color: #A8A29E; /* --text-secondary */
+  font-size: 1.1rem;
+}
+
+.add-users-card {
+  background-color: #282828; /* --surface-primary */
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 2rem;
+  margin-bottom: 2rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.add-users-card h2 {
+  color: #FF6F61; /* --accent-primary */
+  font-size: 1.5rem;
+  margin-bottom: 1.5rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 2px solid #FF5722; /* --accent-vibrant */
+  display: inline-block;
+}
+
+.add-users-form {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+  align-items: flex-end;
+}
+
+.add-users-form-group {
+  margin-bottom: 1rem;
+}
+
+.add-users-form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  color: #A8A29E; /* --text-secondary */
+  font-weight: 500;
+}
+
+.add-users-form-control {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 6px;
+  background-color: rgba(255, 255, 255, 0.05);
+  color: #F5E8D8; /* --text-primary */
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+.add-users-form-control:focus {
+  outline: none;
+  border-color: #FF5722; /* --accent-vibrant */
+  box-shadow: 0 0 0 2px rgba(255, 87, 34, 0.2);
+}
+
+.add-users-submit-btn,
+.add-users-remove-btn {
+  border: none;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-family: inherit;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+/* Submit Button */
+.add-users-submit-btn {
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  background-color: #dd6f4d; /* --accent-vibrant */
+  color: white;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.add-users-submit-btn:hover {
+  background-color: #e64a19;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.add-users-submit-btn:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.add-users-submit-btn:disabled {
+  background-color: #cccccc;
+  cursor: not-allowed;
+  opacity: 0.7;
+  transform: none;
+  box-shadow: none;
+}
+
+/* Remove Button */
+.add-users-remove-btn {
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+  background-color: #dc3545;
+  color: white;
+  border: 1px solid transparent;
+}
+
+.add-users-remove-btn:hover {
+  background-color: #bb2d3b;
+  border-color: #b02a37;
+  transform: translateY(-1px);
+}
+
+.add-users-remove-btn:active {
+  transform: translateY(0);
+}
+
+.add-users-remove-btn:disabled {
+  background-color: #6c757d;
+  cursor: not-allowed;
+  opacity: 0.65;
+  transform: none;
+}
+
+/* Loading state for buttons */
+.add-users-btn-loading {
+  position: relative;
+  color: transparent;
+  pointer-events: none;
+}
+
+.add-users-btn-loading::after {
+  content: '';
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  top: 50%;
+  left: 50%;
+  margin: -8px 0 0 -8px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  border-top-color: white;
+  animation: addUsersSpin 0.8s linear infinite;
+}
+
+@keyframes addUsersSpin {
+  to { transform: rotate(360deg); }
+}
+
+.add-users-table-container {
+  overflow-x: auto;
+  margin-top: 1.5rem;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.add-users-table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: #282828; /* --surface-primary */
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.add-users-table th,
+.add-users-table td {
+  padding: 1rem;
+  text-align: left;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.add-users-table th {
+  background-color: rgba(255, 111, 97, 0.1);
+  color: #FF6F61; /* --accent-primary */
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  letter-spacing: 0.5px;
+}
+
+.add-users-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.add-users-table tbody tr:hover {
+  background-color: rgba(255, 255, 255, 0.03);
+}
+
+.add-users-loading {
+  text-align: center;
+  padding: 2rem;
+  color: #A8A29E; /* --text-secondary */
+  font-style: italic;
+}
+
+.add-users-empty-state {
+  text-align: center;
+  padding: 2rem;
+  color: #A8A29E; /* --text-secondary */
+  background-color: rgba(255, 255, 255, 0.03);
+  border-radius: 8px;
+  margin-top: 1rem;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .add-users-container {
+    padding: 1rem;
+  }
+  
+  .add-users-form {
+    grid-template-columns: 1fr;
+  }
+  
+  .add-users-card {
+    padding: 1.5rem;
+  }
+  
+  .add-users-header h1 {
+    font-size: 1.75rem;
+  }
+}
