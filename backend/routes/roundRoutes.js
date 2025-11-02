@@ -6,7 +6,8 @@ import {
   activateRound,
   updateRoundTime,
   deactivateRound,
-  deleteRound
+  deleteRound,
+  getRoundParticipants
 } from '../controllers/roundControllers.js';
 
 const roundRoutes = express.Router();
@@ -31,5 +32,8 @@ roundRoutes.patch('/:id/deactivate', deactivateRound);
 
 // Delete a round
 roundRoutes.delete('/:id', deleteRound);
+
+// Get participants for a specific round
+roundRoutes.get('/:roundId/participants', getRoundParticipants);
 
 export default roundRoutes;

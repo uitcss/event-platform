@@ -6,6 +6,11 @@ const submissionSchema = new mongoose.Schema({
     ref: 'User',
     required: true
   },
+  round_id: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Round',
+    required: true
+  },
   question_id: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'Question',
@@ -18,7 +23,12 @@ const submissionSchema = new mongoose.Schema({
   is_correct: {
     type: Boolean,
     default: null // Will be set by admin during manual grading
+  },
+  auto_graded:{
+    type: Boolean,
+    default: false
   }
+
 }, {
   timestamps: true
 });

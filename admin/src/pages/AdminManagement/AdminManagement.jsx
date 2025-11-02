@@ -146,7 +146,7 @@ const AdminManagement = () => {
               </div>
             </div>
             
-            <button type="submit" className="submit-btn" disabled={loading}>
+            <button type="submit" className="submit-btn form-group" disabled={loading}>
               {loading ? 'Adding...' : 'Add Admin'}
             </button>
           </form>

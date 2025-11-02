@@ -12,6 +12,7 @@ import ValidatingAnswers from './pages/ValidatingAnswers/ValidatingAnswers';
 import Results from './pages/Results/Results';
 import AdminManagement from './pages/AdminManagement/AdminManagement';
 import { useAuth } from './Context/adminAuthContext';
+import AddUsers from './pages/AddUsers/AddUsers';
 
 // Protected route component
 const ProtectedRoute = ({ children }) => {
@@ -44,6 +45,7 @@ const App = () => {
           <Route path="/answers" element={<ProtectedRoute><ValidatingAnswers /></ProtectedRoute>} />
           <Route path="/results" element={<ProtectedRoute><Results /></ProtectedRoute>} />
           <Route path="/admin" element={<ProtectedRoute><AdminManagement /></ProtectedRoute>} />
+          <Route path="/addusers" element={<ProtectedRoute><AddUsers /></ProtectedRoute>} />
         </Routes>
       </div>
       <ToastContainer />
