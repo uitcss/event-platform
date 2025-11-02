@@ -1,13 +1,25 @@
 import express from 'express';
 import authMiddleware from '../middleware/adminAuthMiddleware.js';
+import { 
+  getResultsByRound, 
+  getAllResults, 
+  getUserResults 
+} from '../controllers/resultController.js';
 
-const resultRoutes = express.Router();
 
-resultRoutes.use(authMiddleware);
+// api/results routes
+const router = express.Router();
 
-//Get results of a round, in admin view
-resultRoutes.get('/round/:roundId', (req, res) => {
-  res.send('Result route is working');
-});
+// Apply auth middleware to all routes
+router.use(authMiddleware);
 
-export default resultRoutes;
+// Get all results for a specific round
+router.get('/:roundId', getResultsByRound);
+
+// Get all rounds' results, this route is not used in the frontend currently
+router.get('/', getAllResults);
+
+// Get a user's results across all rounds
+router.get('/user/:userId', getUserResults);
+
+export default router;

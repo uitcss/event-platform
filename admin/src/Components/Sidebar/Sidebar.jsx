@@ -9,7 +9,8 @@ const menuItems = [
   { path: '/users', label: 'User Management' },
   { path: '/answers', label: 'Validate Answers' },
   { path: '/results', label: 'Participant results' },
-  { path: '/admin', label: 'Admin Management' }
+  { path: '/admin', label: 'Admin Management' },
+  { path: '/addusers', label: 'Add Users' }
 ];
 
 const Sidebar = () => {

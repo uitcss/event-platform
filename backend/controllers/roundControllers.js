@@ -1,4 +1,5 @@
 import Round from '../models/Round.js';
+import User from '../models/User.js';
 import mongoose from 'mongoose';
 
 //get all rounds
@@ -186,5 +187,37 @@ export const updateRoundTime = async (req, res) => {
       return res.status(400).json({ message: 'Invalid round ID' });
     }
     res.status(500).json({ message: 'Server error while updating round time' });
+  }
+};
+
+// Get participants for a specific round
+export const getRoundParticipants = async (req, res) => {
+  try {
+    const { roundId } = req.params;
+
+    // Find the round to verify it exists
+    const round = await Round.findById(roundId);
+    if (!round) {
+      return res.status(404).json({ message: 'Round not found' });
+    }
+
+    // Find all users who have this round in their rounds array
+    const participants = await User.find({ 
+      'rounds.round': roundId,
+      role: 'participant' // Only get participants, not admins or other roles
+    }).select('-password -refreshToken -__v'); // Exclude sensitive data and version key
+
+    // Return the participants in the format expected by the frontend
+    // The frontend checks for either a direct array or data.users array
+    res.status(200).json(participants);
+  } catch (error) {
+    console.error('Error fetching round participants:', error);
+    if (error.name === 'CastError') {
+      return res.status(400).json({ message: 'Invalid round ID format' });
+    }
+    res.status(500).json({ 
+      message: 'Server error while fetching round participants',
+      error: error.message 
+    });
   }
 };
