@@ -1,4 +1,5 @@
 import bcrypt from "bcrypt";
+import jwt from "jsonwebtoken";
 import User from "../models/User.js"; // adjust the path to your User model
 import EventSetting from "../models/EventSettings.js";
 

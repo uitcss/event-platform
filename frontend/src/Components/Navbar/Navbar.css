@@ -1,0 +1,243 @@
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css');
+
+.navbar {
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(10px);
+  height: 80px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1rem;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 1000;
+  transition: all 0.3s ease-in-out;
+  border-bottom: 1px solid var(--uu-border);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.navbar.scrolled {
+  height: 70px;
+  background: rgba(255, 255, 255, 0.98);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+
+.navbar-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  max-width: 1200px;
+  padding: 0 2rem;
+}
+
+.navbar-logo {
+  color: var(--uu-text-on-dark);
+  justify-self: flex-start;
+  cursor: pointer;
+  text-decoration: none;
+  font-size: 1.5rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  transition: all 0.3s ease;
+  color: var(--uu-gradient-end);
+}
+
+
+
+.logo {
+  width: 40px;
+  height: 40px;
+  margin-right: 10px;
+  object-fit: cover;
+
+}
+
+
+
+.navbar-logo:hover {
+  color: var(--uu-gradient-start);
+}
+
+.nav-menu {
+  display: flex;
+  align-items: center;
+  list-style: none;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-item {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.nav-links {
+  color: var(--uu-text-on-dark);
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  transition: all 0.2s ease;
+  font-weight: 500;
+  position: relative;
+  margin: 0 0.5rem;
+  border-radius: 8px;
+}
+
+.nav-links:after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: 0;
+  left: 50%;
+  background: var(--uu-accent);
+  transition: all 0.3s ease;
+  transform: translateX(-50%);
+}
+
+.nav-links:hover:after,
+.nav-links.active:after {
+  width: 60%;
+  background: var(--uu-gradient-end);
+}
+
+.nav-links:hover,
+.nav-links.active {
+  color: var(--uu-gradient-end);
+  background: rgba(124, 58, 237, 0.05);
+}
+
+.auth-buttons {
+  margin-left: 1rem;
+  display: flex;
+  gap: 1rem;
+}
+
+.login-btn,
+.register-btn {
+  padding: 0.5rem 1.2rem !important;
+  border-radius: var(--uu-radius);
+  transition: all 0.3s ease;
+}
+
+.login-btn {
+  border: 1px solid var(--uu-gradient-end);
+  color: var(--uu-gradient-end) !important;
+  background: transparent;
+}
+
+.login-btn:hover {
+  /* background: rgba(255, 255, 255, 0.549); */
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(124, 58, 237, 0.1);
+}
+
+.register-btn {
+  background: linear-gradient(135deg, var(--uu-gradient-start), var(--uu-gradient-end));
+  color: white !important;
+  font-weight: 600;
+  border: 1px solid transparent;
+}
+
+.register-btn:hover {
+  /* background: rgba(255, 255, 255, 0.826); */
+  border:1px solid var(--uu-gradient-end); ;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(124, 58, 237, 0.1);
+   color: var(--uu-gradient-end) !important;
+}
+
+.menu-icon {
+  display: none;
+  color: var(--uu-text-on-dark);
+  font-size: 1.8rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.menu-icon:hover {
+  color: var(--uu-accent);
+}
+
+/* Mobile styles */
+@media screen and (max-width: 960px) {
+  .navbar {
+    height: 70px;
+    background: white;
+  }
+
+  .nav-menu {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 90vh;
+    position: absolute;
+    top: 70px;
+    left: -100%;
+    opacity: 0;
+    transition: all 0.3s ease;
+    background: white;
+    z-index: 1;
+    padding: 2rem 0;
+    justify-content: flex-start;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  }
+
+  .nav-menu.active {
+    left: 0;
+    opacity: 1;
+    transition: all 0.5s ease;
+  }
+
+  .nav-item {
+    width: 90%;
+    margin: 0 auto;
+    justify-content: center;
+    padding: 0.5rem 0;
+  }
+
+  .nav-links {
+    text-align: center;
+    padding: 1rem;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    border-radius: 8px;
+    margin: 0.25rem 0;
+  }
+  
+  .nav-links:hover {
+    background: rgba(124, 58, 237, 0.05);
+  }
+
+  .nav-links:after {
+    display: none;
+  }
+
+  .auth-buttons {
+    flex-direction: column;
+    width: 80%;
+    margin: 1rem auto 0;
+    gap: 1rem;
+  }
+
+  .login-btn,
+  .register-btn {
+    width: 100%;
+    text-align: center;
+    padding: 0.8rem !important;
+  }
+
+  .menu-icon {
+    display: block;
+  }
+}

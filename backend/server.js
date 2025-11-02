@@ -37,9 +37,8 @@ app.use('/api/test', testRoutes) // gets questions for active round and submits 
 app.use('/api/adminauth', adminAuthRoutes) // admin login routes
 
 
-// app.use(adminAuthMiddleware); // Apply admin auth middleware for all routes below
+app.use(adminAuthMiddleware); 
 
-// Protected admin routes (require authentication)
 app.use('/api/users', userRoutes) // admin only routes to get/promote/deactivate users
 app.use('/api/rounds', roundRoutes) // admin only routes to create/activate/update rounds
 app.use('/api/questions', questionRoutes) // admin only routes to add/update/delete questions
