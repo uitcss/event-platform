@@ -6,7 +6,7 @@ import Login from './pages/Login/Login';
 import Navbar from './Components/Navbar/Navbar';
 import Home from './pages/Home/Home';
 import './App.css';
-import Register from './Pages/Register/Register';
+import About from './Pages/About/About';
 
 
 function App() {
@@ -19,7 +19,7 @@ function App() {
         <Routes>
           <Route path='/' element={<Home />} />
           <Route path='/login' element={<Login />} />
-          <Route path='/register' element={<Register apiUrl={apiUrl}/>} />
+          <Route path='/about' element={<About />} />
         </Routes>
       </div>
       <ToastContainer />
