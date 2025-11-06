@@ -38,7 +38,8 @@ const calculateRoundResults = async (roundId) => {
         correctAnswers: {
           $sum: { $cond: [{ $eq: ['$is_correct', true] }, 1, 0] }
         },
-        totalQuestions: { $sum: 1 }
+        totalQuestions: { $sum: 1 },
+        time_taken: { $first: '$time_taken' }
       }
     },
     {
@@ -51,7 +52,8 @@ const calculateRoundResults = async (roundId) => {
         score: { $multiply: ['$correctAnswers', questionWeight] },
         total_marks_possible: { $multiply: ['$totalQuestions', questionWeight] },
         correct_answers: '$correctAnswers',
-        total_questions: '$totalQuestions'
+        total_questions: '$totalQuestions',
+        time_taken: '$time_taken'
       }
     },
     { $sort: { score: -1 } }
@@ -128,6 +130,7 @@ export const getAllResults = async (req, res) => {
               email: '$_id.userEmail',
               correct_answers: '$correct_answers',
               total_questions: '$total_questions',
+              time_taken: '$time_taken',
               score: { $multiply: ['$correct_answers', questionWeight] },
               total_marks_possible: { $multiply: ['$total_questions', questionWeight] },
               round: '$_id.roundId'

@@ -5,51 +5,37 @@ import axios from 'axios';
 const AuthContext = createContext(null);
 
 export const AuthProvider = ({ children, apiUrl }) => {
-  const [authState, setAuthState] = useState({
-    token: localStorage.getItem('token') || null,
-    isAuthenticated: !!localStorage.getItem('token'),
-    loading: true,
-    user: null
-  });
 
   const navigate = useNavigate();
+  const [authState, setAuthState] = useState({
+    token: null,
+    isAuthenticated: false,
+    loading: true,
+    user: null,
+  });
 
+  
   // Set auth token for axios requests
   const setAuthToken = (token) => {
     if (token) {
-      axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
       localStorage.setItem('token', token);
     } else {
-      delete axios.defaults.headers.common['Authorization'];
       localStorage.removeItem('token');
     }
   };
 
-  // Initialize auth state
-  useEffect(() => {
-    const token = localStorage.getItem('token');
-    if (token) {
-      setAuthToken(token);
-      // Optionally fetch user data here if needed
-      // await loadUser();
-    }
-    setAuthState(prev => ({
-      ...prev,
-      loading: false
-    }));
-  }, []);
+
 
   // Login function
-  const login = async (email, password) => {
+  const login = async (email) => {
     try {
-      const response = await axios.post(`${apiUrl}/api/auth/login`, {
-        email,
-        password
+      const response = await axios.post(`${apiUrl}/api/test/login`, {
+        email
       });
 
-      const { token } = response.data;
+      const token = response.data.id;
       setAuthToken(token);
-      
+
       setAuthState({
         token,
         isAuthenticated: true,
@@ -64,17 +50,6 @@ export const AuthProvider = ({ children, apiUrl }) => {
     }
   };
 
-  // Logout function
-  const logout = () => {
-    setAuthToken(null);
-    setAuthState({
-      token: null,
-      isAuthenticated: false,
-      loading: false,
-      user: null
-    });
-    navigate('/login');
-  };
 
   // Check if token exists and is valid
   const checkAuth = () => {
@@ -86,8 +61,6 @@ export const AuthProvider = ({ children, apiUrl }) => {
       value={{
         ...authState,
         login,
-        logout,
-        checkAuth,
         setAuthToken
       }}
     >

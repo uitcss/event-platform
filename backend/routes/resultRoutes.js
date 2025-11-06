@@ -14,12 +14,14 @@ const router = express.Router();
 router.use(authMiddleware);
 
 // Get all results for a specific round
-router.get('/:roundId', getResultsByRound);
+router.get('/round/:roundId', getResultsByRound);
 
 // Get all rounds' results, this route is not used in the frontend currently
 router.get('/', getAllResults);
 
 // Get a user's results across all rounds
 router.get('/user/:userId', getUserResults);
+
+
 
 export default router;

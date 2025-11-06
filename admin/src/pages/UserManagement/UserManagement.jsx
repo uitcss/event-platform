@@ -50,7 +50,7 @@ const UserManagement = () => {
         const response = await api.get('/users');
         setUsers(response.data);
       } else {
-        const response = await api.get(`/users/${roundId}`);
+        const response = await api.get(`/users/round/${roundId}`);
         setUsers(response.data);
       }
     } catch (error) {

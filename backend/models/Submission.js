@@ -24,11 +24,14 @@ const submissionSchema = new mongoose.Schema({
     type: Boolean,
     default: null // Will be set by admin during manual grading
   },
-  auto_graded:{
+  auto_graded: {
     type: Boolean,
     default: false
-  }
-
+  },
+  time_taken: {
+    type: Number, // Storing time in seconds
+    default: 0,
+  },
 }, {
   timestamps: true
 });
