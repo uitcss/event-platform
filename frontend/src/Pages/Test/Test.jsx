@@ -7,12 +7,11 @@ import TestInstructions from './components/TestInstructions';
 import TestPage from './components/TestPage';
 import './Test.css';
 
-const Test = () => {
+const Test = ({apiUrl}) => {
   const [isLoading, setIsLoading] = useState(true);
   const [testStarted, setTestStarted] = useState(false);
   const [questions, setQuestions] = useState([]);
   const [round, setRound] = useState(null);
-  const [apiUrl] = useState('http://localhost:4000');
   const navigate = useNavigate();
   const userId = localStorage.getItem('userId');
   
