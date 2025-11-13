@@ -9,6 +9,7 @@ import { connectDB } from './config/db.js'
 import eventSettingRoute from './routes/eventSettingRoute.js'
 import cors from 'cors'
 import dotenv from 'dotenv';
+import morgan from 'morgan'
 import adminAuthMiddleware from './middleware/adminAuthMiddleware.js';
 import testRoutes from './routes/testRoutes.js'
 import answerValidationRoutes from './routes/answerValidationRoutes.js'
@@ -20,13 +21,20 @@ const PORT = process.env.PORT || 4000
 
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
+app.use(morgan(':method :url :status :req[content-type] - :response-time ms'))
 app.use('/uploads', express.static('uploads'))
 app.use(cors())
+
+
+app.get('/pingtest', 
+    (_, res)=>{
+      res.send(`pinged express server at localhost:${PORT}`).status(200);
+})
+
 
 try {
   connectDB()
   console.log('mongodb connected succesfully from server.js');
-  
 } catch (error) {
   
 }
