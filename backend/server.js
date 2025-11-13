@@ -9,6 +9,7 @@ import { connectDB } from './config/db.js'
 import eventSettingRoute from './routes/eventSettingRoute.js'
 import cors from 'cors'
 import dotenv from 'dotenv';
+import morgan from 'morgan'
 import adminAuthMiddleware from './middleware/adminAuthMiddleware.js';
 import testRoutes from './routes/testRoutes.js'
 import answerValidationRoutes from './routes/answerValidationRoutes.js'
@@ -21,20 +22,25 @@ const PORT = process.env.PORT || 4000
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 app.use('/uploads', express.static('uploads'))
+app.use(morgan(':method :url :status :req[content-type] - :response-time ms'))
 
 const allowedOrigins = [
   process.env.FRONTEND_URL || 'http://localhost:5173',
   process.env.ADMIN_URL || 'http://localhost:5174'
-].filter(Boolean); // Remove any undefined values
+
+].filter(Boolean); 
 
 console.log('Allowed CORS origins:', allowedOrigins);
 
 app.use(
   cors({
     origin: function (origin, callback) {
-      // Allow requests with no origin (like curl requests OR POSTMAN)
-      if (!origin) return callback(null, true);
-      
+      //allow requests with no origin (like curl requests OR POSTMAN) [unsafe - allows non browser requests]
+      // if (!origin) 
+      //   return callback(null, true); 
+      //only allow un-auth origins when env "MODE" is dev
+      if (process.env.MODE === 'dev') 
+        return callback(null, true);
       if (allowedOrigins.includes(origin)) {
         return callback(null, true);
       }
@@ -48,16 +54,20 @@ app.use(
   })
 );
 
+app.get('/pingtest', 
+    (_, res)=>{
+      res.send(`pinged express server at localhost:${PORT}`).status(200);
+})
+console.log('try a pingtest at http://<address>:4000/pingtest')
+
 try {
   connectDB()
   console.log('mongodb connected succesfully from server.js');
-  
 } catch (error) {
   
 }
 
-// Public routes (no auth required)
-
+// public routes (no auth required)
 app.use('/api/test', testRoutes) // gets questions for active round and submits answers in frontend
 app.use('/api/adminauth', adminAuthRoutes) // admin login routes and setting admins
 
