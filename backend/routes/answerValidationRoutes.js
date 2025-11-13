@@ -4,12 +4,12 @@ import {
   validateSubmission,
   getValidationStats
 } from '../controllers/answerValidationController.js';
-import authMiddleware from '../middleware/adminAuthMiddleware.js';
+import adminAuthMiddleware from '../middleware/adminAuthMiddleware.js';
 
 const router = express.Router();
 
 // Protected admin routes
-router.use(authMiddleware);
+router.use(adminAuthMiddleware);
 
 // Get submissions that need validation
 router.get('/', getSubmissionsForValidation);

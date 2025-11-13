@@ -59,10 +59,10 @@ try {
 // Public routes (no auth required)
 
 app.use('/api/test', testRoutes) // gets questions for active round and submits answers in frontend
-app.use('/api/adminauth', adminAuthRoutes) // admin login routes
+app.use('/api/adminauth', adminAuthRoutes) // admin login routes and setting admins
 
 
-app.use(adminAuthMiddleware); 
+app.use(adminAuthMiddleware); //admin auth middleware for all routes below
 
 app.use('/api/users', userRoutes) // admin only routes to get/promote/deactivate users
 app.use('/api/rounds', roundRoutes) // admin only routes to create/activate/update rounds

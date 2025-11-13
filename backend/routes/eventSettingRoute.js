@@ -5,11 +5,11 @@ import {
   getAllEventSettings,
   deleteEventSetting
 } from "../controllers/eventSettingController.js";
-import authMiddleware from "../middleware/adminAuthMiddleware.js";
+import adminAuthMiddleware from "../middleware/adminAuthMiddleware.js";
 
 const eventSettingRoute = express.Router();
 
-eventSettingRoute.use(authMiddleware);
+eventSettingRoute.use(adminAuthMiddleware);
 
 eventSettingRoute.post("/set", setEventSetting);          // Set or update a setting
 eventSettingRoute.get("/get", getEventSetting);      // Get setting by key
