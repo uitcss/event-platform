@@ -1,5 +1,4 @@
 import express from 'express';
-import authMiddleware from '../middleware/adminAuthMiddleware.js';
 import {
   getRounds,
   createRound,
@@ -9,11 +8,12 @@ import {
   deleteRound,
   getRoundParticipants
 } from '../controllers/roundControllers.js';
+import adminAuthMiddleware from '../middleware/adminAuthMiddleware.js';
 
 const roundRoutes = express.Router();
 
 // Apply auth middleware to all routes
-roundRoutes.use(authMiddleware);
+roundRoutes.use(adminAuthMiddleware);
 
 // Get all rounds
 roundRoutes.get('/', getRounds);

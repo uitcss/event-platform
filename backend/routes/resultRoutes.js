@@ -1,17 +1,17 @@
 import express from 'express';
-import authMiddleware from '../middleware/adminAuthMiddleware.js';
 import { 
   getResultsByRound, 
   getAllResults, 
   getUserResults 
 } from '../controllers/resultController.js';
+import adminAuthMiddleware from '../middleware/adminAuthMiddleware.js';
 
 
 // api/results routes
 const router = express.Router();
 
 // Apply auth middleware to all routes
-router.use(authMiddleware);
+router.use(adminAuthMiddleware);
 
 // Get all results for a specific round
 router.get('/round/:roundId', getResultsByRound);

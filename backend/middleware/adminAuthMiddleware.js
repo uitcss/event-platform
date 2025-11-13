@@ -1,7 +1,7 @@
 // middleware/authMiddleware.js
 import jwt from 'jsonwebtoken';
 
-const authMiddleware = (req, res, next) => {
+const adminAuthMiddleware = (req, res, next) => {
   try {
     // Get token from headers
     const authHeader = req.headers.authorization;
@@ -31,4 +31,4 @@ if (error.name === 'TokenExpiredError') {
   }
 };
 
-export default authMiddleware;
+export default adminAuthMiddleware;
