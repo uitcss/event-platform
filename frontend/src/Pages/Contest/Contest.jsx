@@ -21,16 +21,9 @@ const Contest = ({ apiUrl }) => {
     setFormData({ email: '' });
   };
 
+  // Using standard toast configuration from App.jsx
   const notify = (message, type = 'error') => {
-    toast[type](message, {
-      position: 'top-right',
-      autoClose: 5000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-    });
+    toast[type](message);
   };
 
   const handleChange = (e) => {

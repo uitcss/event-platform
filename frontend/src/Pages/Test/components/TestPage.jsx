@@ -48,6 +48,7 @@ const TestPage = React.memo(function TestPage({
   const timerRef = useRef(null);
   const warningTimerRef = useRef(null);
   const handleSubmitRef = useRef(null);
+  const toastShownRef = useRef(false);
   const mountedRef = useRef(false);
 
   // Keep handleSubmitRef updated
@@ -93,8 +94,8 @@ const TestPage = React.memo(function TestPage({
   }, []);
 
   const handleBeforeUnload = useCallback((e) => {
-    // show confirmation in supporting browsers
-    const message = 'Are you sure you want to leave? The test will be auto-submitted.';
+    // Show browser's default dialog
+    const message = 'Are you sure you want to leave? Your progress will be lost.';
     // Standard:
     e.preventDefault();
     // Chrome requires returnValue set
@@ -114,16 +115,24 @@ const TestPage = React.memo(function TestPage({
         }
         warningTimerRef.current = setTimeout(() => setShowWarning(false), 5000);
 
-        // If reach 3 warnings, auto-submit using ref to avoid stale closure
-        if (newWarnings >= 3) {
-          toast.error('Maximum warnings reached! Submitting test...');
-          // call the latest handleSubmit with fromWarning=true to skip confirmation
-          if (handleSubmitRef.current) {
-            // eslint-disable-next-line @typescript-eslint/no-floating-promises
-            handleSubmitRef.current(true);
+        // Only show toast if we haven't shown one for this warning
+        if (!toastShownRef.current) {
+          // If reach 3 warnings, auto-submit using ref to avoid stale closure
+          if (newWarnings >= 3) {
+            toast.error('Maximum warnings reached! Submitting test...');
+            // call the latest handleSubmit with fromWarning=true to skip confirmation
+            if (handleSubmitRef.current) {
+              // eslint-disable-next-line @typescript-eslint/no-floating-promises
+              handleSubmitRef.current(true);
+            }
+          } else {
+            toast.warning(`Warning ${newWarnings}/3: Please do not switch tabs, refresh, or navigate away from this page.`);
           }
-        } else {
-          toast.warning(`Warning ${newWarnings}/3: Please do not switch tabs, refresh, or navigate away from this page.`);
+          toastShownRef.current = true;
+          // Reset the toast shown flag after a delay
+          setTimeout(() => {
+            toastShownRef.current = false;
+          }, 1000);
         }
 
         return newWarnings;
@@ -643,7 +652,7 @@ const TestPage = React.memo(function TestPage({
               <button
                 type="button"
                 className="btn btn-primary submit-test-btn"
-                onClick={handleSubmit}
+                onClick={() => handleSubmit(false)}
                 disabled={isSubmitting}
                 aria-label="Submit test"
               >

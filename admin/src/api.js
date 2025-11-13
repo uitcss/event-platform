@@ -3,7 +3,7 @@ import { useAuth } from './Context/adminAuthContext';
 
 // Create a custom axios instance with default config
 const api = axios.create({
-  baseURL: 'http://localhost:4000/api', // Your backend API base URL
+  baseURL: import.meta.env.VITE_API_URL, // Your backend API base URL
   headers: {
     'Content-Type': 'application/json',
   },

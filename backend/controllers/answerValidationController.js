@@ -2,13 +2,16 @@ import Submission from '../models/Submission.js';
 import User from '../models/User.js';
 import Question from '../models/Question.js';
 
-// Get all submissions that need validation
+// -------------------- GET SUBMISSIONS FOR VALIDATION --------------------
 export const getSubmissionsForValidation = async (req, res) => {
   try {
     const submissions = await Submission.find({ is_correct: null })
-      .populate('user_id', 'name email')
-      .populate('question_id', 'question_text correct_answer')
-      .populate('round_id', 'round_name');
+      .populate([
+        { path: 'user_id', select: 'name email' },
+        { path: 'question_id', select: 'question_text correct_answer' },
+        { path: 'round_id', select: 'round_name' }
+      ])
+      .lean();
 
     res.status(200).json(submissions);
   } catch (error) {
@@ -17,13 +20,18 @@ export const getSubmissionsForValidation = async (req, res) => {
   }
 };
 
-// Update submission validation status
+
+// -------------------- VALIDATE SUBMISSION --------------------
 export const validateSubmission = async (req, res) => {
   try {
     const { submissionId } = req.params;
-    const { is_correct } = req.body;
+    let { is_correct } = req.body;
 
-    if (typeof is_correct !== 'boolean') {
+    // Convert string "true"/"false" to boolean (optional)
+    if (typeof is_correct === "string")
+      is_correct = is_correct === "true";
+
+    if (typeof is_correct !== "boolean") {
       return res.status(400).json({ message: 'is_correct must be a boolean value' });
     }
 
@@ -32,9 +40,12 @@ export const validateSubmission = async (req, res) => {
       { is_correct },
       { new: true }
     )
-    .populate('user_id', 'name email')
-    .populate('question_id', 'question_text correct_answer')
-    .populate('round_id', 'round_name');
+      .populate([
+        { path: 'user_id', select: 'name email' },
+        { path: 'question_id', select: 'question_text correct_answer' },
+        { path: 'round_id', select: 'round_name' }
+      ])
+      .lean();
 
     if (!submission) {
       return res.status(404).json({ message: 'Submission not found' });
@@ -50,13 +61,21 @@ export const validateSubmission = async (req, res) => {
   }
 };
 
-// Get statistics about submissions
+
+// -------------------- GET VALIDATION STATS --------------------
 export const getValidationStats = async (req, res) => {
   try {
-    const totalSubmissions = await Submission.countDocuments();
-    const pendingValidation = await Submission.countDocuments({ is_correct: null });
-    const correctSubmissions = await Submission.countDocuments({ is_correct: true });
-    const incorrectSubmissions = await Submission.countDocuments({ is_correct: false });
+    const [
+      totalSubmissions,
+      pendingValidation,
+      correctSubmissions,
+      incorrectSubmissions
+    ] = await Promise.all([
+      Submission.countDocuments(),
+      Submission.countDocuments({ is_correct: null }),
+      Submission.countDocuments({ is_correct: true }),
+      Submission.countDocuments({ is_correct: false })
+    ]);
 
     res.status(200).json({
       totalSubmissions,

@@ -1,18 +1,95 @@
-# React + Vite
+# Event Platform Admin Panel
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A comprehensive admin interface for managing the UUCSC event platform, built with React, Vite, and Material-UI.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- 🔐 Secure authentication system
+- 📊 Dashboard for event management
+- 📝 Question and round management
+- 👥 User administration
+- 📊 Results tracking and validation
+- 🔄 Real-time updates
+- 🎨 Responsive design
 
-## React Compiler
+## Tech Stack
 
-The React Compiler is enabled on this template. See [this documentation](https://react.dev/learn/react-compiler) for more information.
+- **Frontend Framework**: React 19
+- **Build Tool**: Vite
+- **UI Library**: Material-UI (MUI) v7
+- **State Management**: React Context API
+- **HTTP Client**: Axios
+- **Routing**: React Router v7
+- **Data Visualization**: Recharts
+- **Form Handling**: Formik & Yup
+- **Notifications**: React Toastify
 
-Note: This will impact Vite dev & build performances.
+## Getting Started
 
-## Expanding the ESLint configuration
+### Prerequisites
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- Node.js (v16 or later)
+- npm
+
+### Installation
+
+1. Clone the repository
+2. Install dependencies:
+   ```bash
+   cd admin
+   npm install
+   ```
+3. Create a `.env` file in the root directory with your environment variables:
+   ```env
+   VITE_API_URL='http://localhost:4000/api'
+   ```
+
+### Available Scripts
+
+- `npm run dev` - Start development server
+- `npm run build` - Build for production
+- `npm run preview` - Preview production build
+- `npm run lint` - Run ESLint
+
+## Project Structure
+
+```
+src/
+├── Components/       # Reusable UI components
+├── Context/         # React context providers
+├── pages/           # Page components
+│   ├── Login/       # Login page
+│   ├── EventSettings/ # Event configuration
+│   ├── RoundsManagement/ # Manage event rounds
+│   ├── UploadQuestions/ # Question management
+│   ├── UserManagement/ # User administration
+│   ├── ValidatingAnswers/ # Answer validation
+│   └── Results/     # View and manage results
+├── assets/          # Static assets
+├── api.js           # API configuration
+└── App.jsx          # Main application component
+```
+
+## Authentication
+
+The admin panel uses JWT-based authentication. Protected routes will redirect unauthenticated users to the login page.
+
+## API Integration
+
+The application communicates with a backend API. The base URL and endpoints are configured in `src/api.js`.
+
+## Environment Variables
+
+| Variable | Description | Default |
+|----------|-------------|---------|
+| `VITE_API_URL` | Base URL for API requests | `http://localhost:4000/api` |
+
+## Contributing
+
+1. Fork the repository
+2. Create a feature branch
+3. Commit your changes
+4. Push to the branch
+5. Open a pull request
+
+

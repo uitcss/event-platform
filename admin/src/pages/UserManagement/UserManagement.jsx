@@ -204,6 +204,7 @@ const UserManagement = () => {
               <th>Email</th>
               <th>Current Round</th>
               <th>Status</th>
+              <th>Logged IN?</th>
               <th>Actions</th>
             </tr>
           </thead>
@@ -218,6 +219,9 @@ const UserManagement = () => {
                     <span className={`status-badge ${user.is_active ? 'active' : 'inactive'}`}>
                       {user.is_active ? 'Active' : 'Inactive'}
                     </span>
+                  </td>
+                  <td className={`btn-status ${user.is_logged_in ? 'activate' : 'deactivate'}`}>
+                    {user.is_logged_in ? 'Taking Test' : 'Not Taking Test'}
                   </td>
                   <td className="actions">
                     <button 

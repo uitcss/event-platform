@@ -12,7 +12,9 @@ import { useEffect, useState, useCallback, useRef } from 'react';
 import './Theme.css'
 
 function App() {
-  const apiUrl = 'http://localhost:4000';
+
+
+  const apiUrl = import.meta.env.VITE_API_URL;
   const location = useLocation();
 
   const [showNavbar, setShowNavbar] = useState(true);
@@ -164,7 +166,18 @@ function App() {
           <Route path="/test" element={<Test apiUrl={apiUrl}/>} />
         </Routes>
       </div>
-      <ToastContainer position="bottom-right" autoClose={3000} />
+      <ToastContainer 
+        position="bottom-right"
+        autoClose={4000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+      />
     </>
   );
 }

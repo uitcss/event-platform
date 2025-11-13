@@ -3,7 +3,7 @@ import mongoose from "mongoose";
 export const connectDB = async () => {
     try {
         await mongoose.connect(
-            'mongodb+srv://vikasgudi:gmail123%40G@uucsc.885eczz.mongodb.net/mydb?retryWrites=true&w=majority'
+            process.env.MONGO_REMOTE
         );
         console.log("MongoDB connected successfully from db.js");
     } catch (error) {
