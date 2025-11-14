@@ -17,7 +17,6 @@ import answerValidationRoutes from './routes/answerValidationRoutes.js'
 dotenv.config();
 
 const app = express()
-const PORT = process.env.PORT || 4000
 
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
@@ -56,9 +55,8 @@ app.use(
 
 app.get('/pingtest', 
     (_, res)=>{
-      res.send(`pinged express server at localhost:${PORT}`).status(200);
+      res.send(`pinged express server!`).status(200);
 })
-console.log('try a pingtest at http://<address>:4000/pingtest')
 
 try {
   connectDB()
@@ -82,6 +80,5 @@ app.use('/api/eventsettings', eventSettingRoute) // set and get event settings
 app.use('/api/auth', authRoutes) // add or remove users
 app.use('/api/answer-validation', answerValidationRoutes) // validate and manage answer submissions
 
-app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}`)
-})
+//vercel requires module export, not port listen
+export default app;
